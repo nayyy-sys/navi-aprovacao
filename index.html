@@ -8,324 +8,187 @@
   <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Arimo', sans-serif;
-      background: #F5FAFC;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 2rem 1rem 4rem;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 32px rgba(29,53,87,0.08);
-      width: 100%;
-      max-width: 520px;
-      overflow: hidden;
-    }
-
-    /* HEADER */
-    .header {
-      text-align: center;
-      padding: 2rem 2rem 1.5rem;
-      border-bottom: 1px solid #e8eef5;
-    }
+    body { font-family: 'Arimo', sans-serif; background: #F5FAFC; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem 4rem; }
+    .card { background: #fff; border-radius: 16px; box-shadow: 0 4px 32px rgba(29,53,87,0.08); width: 100%; max-width: 520px; overflow: hidden; }
+    .header { text-align: center; padding: 2rem 2rem 1.5rem; border-bottom: 1px solid #e8eef5; }
     .header img { height: 56px; width: auto; }
-    .header .tagline {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: #3E3F4D;
-      text-transform: uppercase;
-      margin-top: 6px;
-    }
-
-    /* CLIENT BADGE */
+    .header .tagline { font-size: 11px; letter-spacing: 2px; color: #3E3F4D; text-transform: uppercase; margin-top: 6px; }
     .badge-wrap { text-align: center; padding: 1.5rem 2rem 0; }
-    .badge {
-      display: inline-block;
-      background: #1D3557;
-      color: #F5FAFC;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 5px 16px;
-      border-radius: 20px;
-    }
-
-    /* POST CARD */
+    .badge { display: inline-block; background: #1D3557; color: #F5FAFC; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 16px; border-radius: 20px; }
     .post-section { padding: 1.25rem 2rem; }
-
-    .post-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      background: #1D3557;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.25rem;
-      overflow: hidden;
-    }
-    .post-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-    .post-image .placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    .post-image .placeholder svg { opacity: 0.25; }
-    .post-image .placeholder span {
-      color: #F5FAFC;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.5;
-    }
-
-    .post-label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #888;
-      margin-bottom: 4px;
-    }
-    .post-date {
-      font-size: 14px;
-      font-weight: 700;
-      color: #1D3557;
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .post-date svg { flex-shrink: 0; }
-
-    .post-caption {
-      font-size: 14px;
-      color: #333;
-      line-height: 1.75;
-      background: #f4f8fc;
-      border-radius: 8px;
-      padding: 1rem 1.125rem;
-      border-left: 3px solid #1D3557;
-    }
-
-    /* DIVIDER */
-    .divider { height: 1px; background: #e8eef5; margin: 0 2rem; }
-
-    /* ACTION */
-    .action-section { padding: 1.5rem 2rem 2rem; }
-    .action-label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #888;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
+    .post-image { width: 100%; aspect-ratio: 1/1; background: #1D3557; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; overflow: hidden; }
+    .post-image img { width: 100%; height: 100%; object-fit: cover; }
+    .placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .placeholder span { color: #F5FAFC; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; }
+    .post-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+    .post-date { font-size: 14px; font-weight: 700; color: #1D3557; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 6px; }
+    .post-caption { font-size: 14px; color: #333; line-height: 1.75; background: #f4f8fc; border-radius: 8px; padding: 1rem 1.125rem; border-left: 3px solid #1D3557; }
+    .divider { height: 1px; background: #e8eef5; margin: 1.25rem 0; }
+    .action-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #888; text-align: center; margin-bottom: 1rem; }
     .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
-
-    .btn {
-      border-radius: 10px;
-      padding: 14px 10px;
-      font-family: 'Arimo', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: opacity 0.2s, background 0.2s;
-      border: none;
-    }
+    .btn { border-radius: 10px; padding: 14px 10px; font-family: 'Arimo', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.2s; border: none; }
     .btn-approve { background: #1D3557; color: #F5FAFC; }
     .btn-approve:hover { opacity: 0.85; }
     .btn-change { background: transparent; color: #1D3557; border: 2px solid #1D3557; }
     .btn-change:hover { background: rgba(29,53,87,0.05); }
-
     .textarea-wrap { display: none; }
     .textarea-wrap.visible { display: block; }
-    textarea {
-      width: 100%;
-      min-height: 100px;
-      border: 1px solid #c8d8e8;
-      border-radius: 8px;
-      padding: 12px;
-      font-family: 'Arimo', sans-serif;
-      font-size: 14px;
-      color: #333;
-      background: #fff;
-      resize: vertical;
-      margin-bottom: 10px;
-      outline: none;
-    }
+    textarea { width: 100%; min-height: 100px; border: 1px solid #c8d8e8; border-radius: 8px; padding: 12px; font-family: 'Arimo', sans-serif; font-size: 14px; color: #333; resize: vertical; margin-bottom: 10px; outline: none; }
     textarea:focus { border-color: #1D3557; }
-
-    .btn-send {
-      width: 100%;
-      background: #3E3F4D;
-      color: #F5FAFC;
-      border: none;
-      border-radius: 10px;
-      padding: 13px;
-      font-family: 'Arimo', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
+    .btn-send { width: 100%; background: #3E3F4D; color: #F5FAFC; border: none; border-radius: 10px; padding: 13px; font-family: 'Arimo', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; }
     .btn-send:hover { opacity: 0.85; }
-
-    /* SUCCESS */
+    .sending-msg { display: none; text-align: center; padding: 2.5rem 2rem; }
+    .sending-msg.visible { display: block; }
+    .spinner { width: 36px; height: 36px; border: 3px solid #e8eef5; border-top-color: #1D3557; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
     .success-msg { display: none; text-align: center; padding: 2.5rem 2rem; }
     .success-msg.visible { display: block; }
-    .success-icon { font-size: 48px; margin-bottom: 12px; }
     .success-title { font-size: 18px; font-weight: 700; color: #1D3557; margin-bottom: 6px; }
     .success-sub { font-size: 14px; color: #666; }
-
-    /* FOOTER */
-    .footer {
-      text-align: center;
-      padding: 1.25rem 2rem 1.75rem;
-      border-top: 1px solid #e8eef5;
-    }
+    .footer { text-align: center; padding: 1.25rem 2rem 1.75rem; border-top: 1px solid #e8eef5; }
     .footer-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; }
     .footer-name { font-size: 13px; font-weight: 700; color: #1D3557; letter-spacing: 1px; margin-top: 2px; }
     .footer-agency { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-top: 2px; }
-
-    @media (max-width: 480px) {
-      body { padding: 1rem 0.75rem 3rem; }
-      .post-section, .action-section { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .divider, .badge-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .header { padding: 1.5rem 1.25rem 1.25rem; }
-    }
   </style>
 </head>
 <body>
-  <div class="card">
+<div class="card">
 
-    <!-- HEADER -->
-    <div class="header">
-      <img src="https://i.imgur.com/placeholder.png" alt="NAVI" id="navi-logo"
-        onerror="this.style.display='none'; document.getElementById('navi-text').style.display='block';" />
-      <div id="navi-text" style="display:none; font-size:28px; font-weight:700; letter-spacing:8px; color:#1D3557;">NAVI</div>
-      <div class="tagline">Assessoria de marketing e mídias</div>
-    </div>
+  <div class="header">
+    <img src="logo-navi.png" alt="NAVI" onerror="this.style.display='none';document.getElementById('navi-text').style.display='block';" />
+    <div id="navi-text" style="display:none;font-size:28px;font-weight:700;letter-spacing:8px;color:#1D3557;">NAVI</div>
+    <div class="tagline">Assessoria de marketing e mídias</div>
+  </div>
 
-    <!-- BADGE -->
-    <div class="badge-wrap" style="padding-top:1.5rem;">
-      <span class="badge" id="client-name">Andrea Ramos · Depilação com Cera</span>
-    </div>
+  <div class="badge-wrap">
+    <span class="badge" id="client-name">Andrea Ramos · Depilação com Cera</span>
+  </div>
 
-    <!-- POST -->
-    <div class="post-section" id="main-content">
-
-      <div style="margin-top:1.25rem;">
-        <div class="post-image" id="post-image-wrap">
-          <div class="placeholder">
-            <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-              <rect x="4" y="9" width="44" height="34" rx="4" stroke="#F5FAFC" stroke-width="1.5"/>
-              <circle cx="17" cy="22" r="5" stroke="#F5FAFC" stroke-width="1.5"/>
-              <path d="M4 35 L15 23 L24 32 L33 23 L48 38" stroke="#F5FAFC" stroke-width="1.5" stroke-linejoin="round"/>
-            </svg>
-            <span>imagem do post</span>
-          </div>
+  <div class="post-section" id="main-content">
+    <div style="margin-top:1.25rem;">
+      <div class="post-image">
+        <div class="placeholder">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+            <rect x="4" y="9" width="44" height="34" rx="4" stroke="#F5FAFC" stroke-width="1.5"/>
+            <circle cx="17" cy="22" r="5" stroke="#F5FAFC" stroke-width="1.5"/>
+            <path d="M4 35 L15 23 L24 32 L33 23 L48 38" stroke="#F5FAFC" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span>imagem do post</span>
         </div>
       </div>
-
-      <div class="post-label">data de postagem</div>
-      <div class="post-date" id="post-date">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D3557" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-        <span id="date-text">Quinta-feira, 15 de maio de 2025</span>
-      </div>
-
-      <div class="post-label" style="margin-bottom:8px;">legenda</div>
-      <div class="post-caption" id="post-caption">
-        Cada produto tem uma função.<br>
-        Cada detalhe tem um porquê.<br><br>
-        A saúde da sua pele começa antes mesmo da cera — e eu cuido de tudo isso pra você. 🤍<br><br>
-        Aqui não é só depilação. É técnica, carinho e resultado.<br><br>
-        <strong>Vem sentir na pele? Me segue e agenda seu horário! 👇</strong>
-      </div>
-
-      <div style="height:1.5rem;"></div>
-
-      <div class="divider" style="margin:0 0 1.25rem;"></div>
-      <div class="action-label">o que você acha deste conteúdo?</div>
-
-      <div class="btn-row">
-        <button class="btn btn-approve" onclick="handleApprove()">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Aprovar
-        </button>
-        <button class="btn btn-change" onclick="handleChange()">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          Solicitar alteração
-        </button>
-      </div>
-
-      <div class="textarea-wrap" id="textarea-wrap">
-        <textarea id="change-text" placeholder="Descreva o que você gostaria de alterar..."></textarea>
-        <button class="btn-send" onclick="handleSend()">Enviar solicitação</button>
-      </div>
-
-    </div><!-- /main-content -->
-
-    <!-- SUCCESS -->
-    <div class="success-msg" id="success-msg">
-      <div class="success-icon">⚓</div>
-      <div class="success-title" id="success-title">Post aprovado!</div>
-      <div class="success-sub" id="success-sub">Obrigada! A NAVI já recebeu sua confirmação.</div>
     </div>
 
-    <!-- FOOTER -->
-    <div class="footer">
-      <div class="footer-label">conteúdo produzido por</div>
-      <div class="footer-name">Nathally Vital</div>
-      <div class="footer-agency">NAVI · Assessoria de Marketing e Mídias</div>
+    <div class="post-label">data de postagem</div>
+    <div class="post-date">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D3557" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      <span id="date-text">Quinta-feira, 15 de maio de 2025</span>
     </div>
 
-  </div><!-- /card -->
+    <div class="post-label" style="margin-bottom:8px;">legenda</div>
+    <div class="post-caption" id="post-caption">
+      Cada produto tem uma função.<br>
+      Cada detalhe tem um porquê.<br><br>
+      A saúde da sua pele começa antes mesmo da cera — e eu cuido de tudo isso pra você. 🤍<br><br>
+      Aqui não é só depilação. É técnica, carinho e resultado.<br><br>
+      <strong>Vem sentir na pele? Me segue e agenda seu horário! 👇</strong>
+    </div>
 
-  <script>
-    function handleApprove() {
-      document.getElementById('main-content').style.display = 'none';
-      document.getElementById('success-title').textContent = 'Post aprovado! ✅';
-      document.getElementById('success-sub').textContent = 'Obrigada! A NAVI já recebeu sua confirmação.';
-      document.getElementById('success-msg').classList.add('visible');
-    }
+    <div class="divider"></div>
+    <div class="action-label">o que você acha deste conteúdo?</div>
 
-    function handleChange() {
-      const wrap = document.getElementById('textarea-wrap');
-      wrap.classList.toggle('visible');
-      if (wrap.classList.contains('visible')) {
-        document.getElementById('change-text').focus();
-      }
-    }
+    <div class="btn-row">
+      <button class="btn btn-approve" onclick="handleApprove()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Aprovar
+      </button>
+      <button class="btn btn-change" onclick="handleChange()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Solicitar alteração
+      </button>
+    </div>
 
-    function handleSend() {
-      const text = document.getElementById('change-text').value.trim();
-      if (!text) { alert('Por favor, descreva a alteração desejada.'); return; }
-      document.getElementById('main-content').style.display = 'none';
-      document.getElementById('success-title').textContent = 'Solicitação enviada! ✏️';
-      document.getElementById('success-sub').textContent = 'Recebemos seu comentário e vamos ajustar o conteúdo em breve.';
-      document.getElementById('success-msg').classList.add('visible');
+    <div class="textarea-wrap" id="textarea-wrap">
+      <textarea id="change-text" placeholder="Descreva o que você gostaria de alterar..."></textarea>
+      <button class="btn-send" onclick="handleSend()">Enviar solicitação</button>
+    </div>
+  </div>
+
+  <div class="sending-msg" id="sending-msg">
+    <div class="spinner"></div>
+    <div style="font-size:14px;color:#666;">Enviando sua resposta...</div>
+  </div>
+
+  <div class="success-msg" id="success-msg">
+    <div style="font-size:48px;margin-bottom:12px;" id="success-icon">✅</div>
+    <div class="success-title" id="success-title">Post aprovado!</div>
+    <div class="success-sub" id="success-sub">Obrigada! A NAVI já recebeu sua confirmação.</div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-label">conteúdo produzido por</div>
+    <div class="footer-name">Nathally Vital</div>
+    <div class="footer-agency">NAVI · Assessoria de Marketing e Mídias</div>
+  </div>
+
+</div>
+
+<!-- FORMULÁRIO INVISÍVEL → envia direto pro Google Sheets -->
+<iframe name="hidden-iframe" style="display:none;"></iframe>
+<form id="gform" target="hidden-iframe" method="POST"
+  action="https://docs.google.com/forms/d/e/1FAIpQLSdXfEq4YGe9g2vCvp1HtZh5CsmhmltIEF80lizxREKSDnf1tw/formResponse">
+  <input type="hidden" name="entry.965889055"  id="field-cliente" />
+  <input type="hidden" name="entry.1399992003" id="field-status" />
+  <input type="hidden" name="entry.942754885"  id="field-comentario" />
+</form>
+
+<script>
+  var CLIENT = document.getElementById('client-name').textContent;
+
+  function submitToSheets(status, comentario) {
+    document.getElementById('field-cliente').value    = CLIENT;
+    document.getElementById('field-status').value     = status;
+    document.getElementById('field-comentario').value = comentario || '';
+    document.getElementById('gform').submit();
+  }
+
+  function showSuccess(icon, title, sub) {
+    document.getElementById('main-content').style.display = 'none';
+    document.getElementById('sending-msg').classList.remove('visible');
+    document.getElementById('success-icon').textContent  = icon;
+    document.getElementById('success-title').textContent = title;
+    document.getElementById('success-sub').textContent   = sub;
+    document.getElementById('success-msg').classList.add('visible');
+  }
+
+  function handleApprove() {
+    document.getElementById('main-content').style.display = 'none';
+    document.getElementById('sending-msg').classList.add('visible');
+    submitToSheets('Aprovado', '');
+    setTimeout(function() {
+      showSuccess('✅', 'Post aprovado!', 'Obrigada! A NAVI já recebeu sua confirmação.');
+    }, 1800);
+  }
+
+  function handleChange() {
+    var wrap = document.getElementById('textarea-wrap');
+    wrap.classList.toggle('visible');
+    if (wrap.classList.contains('visible')) {
+      document.getElementById('change-text').focus();
     }
-  </script>
+  }
+
+  function handleSend() {
+    var text = document.getElementById('change-text').value.trim();
+    if (!text) { alert('Por favor, descreva a alteração desejada.'); return; }
+    document.getElementById('main-content').style.display = 'none';
+    document.getElementById('sending-msg').classList.add('visible');
+    submitToSheets('Solicitar alteração', text);
+    setTimeout(function() {
+      showSuccess('✏️', 'Solicitação enviada!', 'Recebemos seu comentário e vamos ajustar em breve.');
+    }, 1800);
+  }
+</script>
 </body>
 </html>
